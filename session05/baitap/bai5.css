@@ -1,0 +1,8 @@
+h3{
+    color: dodgerblue;
+}
+div{
+    border-left: 8px solid khaki;
+    background-color: rgb(255, 252, 234);
+    line-height: 15px;
+}

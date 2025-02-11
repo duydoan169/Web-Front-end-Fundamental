@@ -1,0 +1,20 @@
+/* reset CSS */
+/* dua css ve trang thai mac dinh */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+div{
+    background-color: deepskyblue;
+    width: 500px;
+    height: 200px;
+    color: aliceblue;
+    font-size: 32px;
+    font-family: fantasy;
+    font-weight: 900;
+    border: 5px solid gold;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+}

@@ -1,0 +1,21 @@
+div{
+    line-height: 30px;
+    background-color: rgb(223, 223, 223);
+    width: fit-content;
+}
+.small{
+    color: grey;
+    font-size: 10px;
+}
+.at-symbol{
+    border: 1px solid black;
+    margin-right: -4px;
+}
+button{
+    width: 430px;
+    height: 35px;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    background-color: dodgerblue;
+}
