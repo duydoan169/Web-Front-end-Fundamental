@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: rgb(231, 231, 231);
+    width: 530px;
+    height: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+    padding: 15px;
+    position: relative;
+}
+h1{
+    line-height: 45px; 
+}
+.img{
+    display: inline-block;
+}
+span{
+    position: relative;
+    bottom: 6px;
+    left: 10px;
+}
+.buttons{
+    position: absolute;
+    left: 40px;
+    bottom: 50px;
+}
+.redButton{
+    background-color: crimson;
+    border: 0;
+    border-radius: 5px;
+    width: 150px;
+    height: 35px;
+    color: white;
+}
+.greyButton{
+    background-color: rgb(231, 231, 231);
+    border: 1;
+    border-color: rgb(201, 201, 201);
+    border-radius: 5px;
+    width: 170px;
+    height: 35px;
+    margin-left: 10px;
+}
