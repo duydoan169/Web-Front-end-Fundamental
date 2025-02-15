@@ -1,0 +1,53 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    position: relative;
+    width: fit-content;
+    font-size: 30px;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+form{
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.main{
+    display: inline-block;
+}
+label{
+    color: white;
+    line-height: 50px;
+    margin-left: 10px;
+}
+input{
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 400px;
+    height: 50px;
+    margin-left: 10px;
+}
+textarea{
+    margin-left: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    height: 150px;
+    width: 820px;
+}
+button{
+    margin-left: 10px;
+    background-color: white;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    height: 50px;
+    width: 200px;
+    margin-top: 25px;
+    font-weight: 900;
+}

@@ -1,0 +1,24 @@
+div{
+    width: 1200px;
+    margin: auto;
+}
+h2{
+    border-bottom: 3px solid orangered;
+    width: fit-content;
+    line-height: 60px;
+    margin: 30px;
+}
+.fa-regular{
+    transform:translate(25px,25px) rotate(-45deg);
+    color: orangered;
+}
+.iconBorder{
+    border: 2px solid rgb(227, 227, 227);
+    transform: rotate(45deg);
+    width: 80px;
+    height: 80px;
+    margin: 50px;
+}
+.opacity{
+    opacity: 0.5;
+}
