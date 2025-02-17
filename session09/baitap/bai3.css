@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    border: 3px solid black;
+    height: 250px;
+    width: 1050px;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    background-color: white;
+    align-content: space-evenly;
+    flex-wrap: wrap;
+}
+.box{
+    background-color: dodgerblue;
+    width: 250px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 5px;
+}
+.boxbig{
+    width: 510px;
+    background-color: dodgerblue;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: -15px;
+    border-radius: 5px;
+}
