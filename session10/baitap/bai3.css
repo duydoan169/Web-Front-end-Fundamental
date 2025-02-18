@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: rgb(241, 241, 241);
+    width: 450px;
+    margin: auto;
+    padding: 10px;
+}
+.opacity{
+    opacity: 0.5;
+    margin: 15px;
+}
+.small{
+    display: flex;
+    align-items: center;
+}
+.small img{
+    border-radius: 50px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+h2{
+    margin: 10px;
+}
+.basketball{
+    border-radius: 10px;
+}
+.card{
+    position: relative;
+}
+button{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 100px;
+    height: 30px;
+}

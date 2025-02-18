@@ -4,14 +4,16 @@
 }
 .container{
     border: 3px solid black;
-    height: 250px;
-    width: 1050px;
-    display: flex;
-    justify-content: space-evenly;
-    align-content: space-evenly;
+    width: fit-content;
     background-color: white;
-    align-content: space-evenly;
-    flex-wrap: wrap;
+    padding: 5px;
+}
+.row1{
+    display: flex;
+
+}
+.row2{
+    display: flex;
 }
 .box{
     background-color: dodgerblue;
@@ -21,18 +23,14 @@
     align-items: center;
     justify-content: center;
     color: white;
-    margin-top: -15px;
-    margin-bottom: -15px;
-    border-radius: 5px;
+    margin: 5px;
 }
 .boxbig{
-    width: 510px;
     background-color: dodgerblue;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin-top: -15px;
-    border-radius: 5px;
+    flex-grow: 1;
+    margin: 5px;
 }
