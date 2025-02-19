@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.cyan{
+    background-color: aquamarine;
+    width: 98%;
+    height: 100px;
+    margin: 20px;
+}
+.container2{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.red{
+    width: 48%;
+    height: 200px;
+    background-color: red;
+}
+.orange{
+    width: 48%;
+    height: 200px;
+    background-color: orange;
+}
+.container3{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.blue{
+    width: 32%;
+    height: 200px;
+    background-color: darkcyan;
+}
+.tomato{
+    width: 32%;
+    height: 200px;
+    background-color: tomato;
+}
+.yellow{
+    width: 32%;
+    height: 200px;
+    background-color: yellow;
+}
+@media screen and (max-width:786px) {
+    .container2{
+        display: block;
+        margin: 0;
+    }
+    .red{
+            width: 98%;
+            margin: 20px;
+    }
+    .orange{
+        width: 98%;
+        margin: 20px;
+    }
+    .container3{
+        margin: 0;
+        display: block;
+    }
+    .blue{
+        width: 98%;
+        margin: 20px;
+    }
+    .tomato{
+        width: 98%;
+        margin: 20px;
+    }
+    .yellow{
+        width: 98%;
+        margin: 20px;
+    }
+}

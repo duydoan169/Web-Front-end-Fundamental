@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: black;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.left{
+    background-color: pink;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    margin-left: 20px;
+}
+.right{
+    display: flex;
+    justify-content: space-evenly;
+    width: 700px;
+    align-items: center;
+}
+.bar{
+    height: 1px;
+    width: 150px;
+    background-color: pink;
+}
+i{
+    color: pink;
+    display: none !important;
+}
+.none{
+    display: none;
+}
+.bigbox{
+    width: 95%;
+    height: 400px;
+    background-color: palevioletred;
+    margin: auto;
+}
+.container4{
+    display: flex;
+    justify-content: space-evenly;
+}
+.smallbox{
+    background-color: rgb(199, 0, 70);
+    width: 22%;
+    height: 150px;
+    margin-top: 20px;
+}
+.container2{
+    display: flex;
+    justify-content: space-evenly;
+}
+.medbox{
+    background-color: rgb(245, 160, 190);
+    width: 46.4%;
+    height: 150px;
+    margin-top: 20px;
+}
+footer{
+    background-color: pink;
+    width: 95%;
+    height: 70px;
+    margin: auto;
+    margin-top: 20px;
+}
+@media screen and (max-width: 1200px) {
+    .none{
+        display: block;
+    }
+    .container4{
+        flex-wrap: wrap;
+    }
+    .smallbox{
+        width: 46.4%;
+        height: 150px;
+    }
+    .container2{
+        margin: auto;
+        justify-content: center;
+    }
+    .medbox{
+        width: 47.5%;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .bar{
+        display: none;
+    }
+    .left{
+        width: 50px;
+        height: 25px;
+    }
+    i{
+        display: inline-block !important;
+        margin-right: -250px;
+    }
+    .container4{
+        flex-wrap: wrap;
+    }
+    .smallbox{
+        width: 95%;
+        height: 150px;
+    }
+    .container2{
+        margin: auto;
+        justify-content: center;
+    }
+    .medbox{
+        width: 47.5%;
+        height: 400px;
+    }
+}
