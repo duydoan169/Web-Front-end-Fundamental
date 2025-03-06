@@ -9,7 +9,7 @@ switch(input){
         }
         break;
     case "b":
-        for(i=1; i<11; i++){
+        for(i=1; i<=10; i++){
             for(j=0; j<i; j++){
                 document.write("*");
             }
@@ -17,7 +17,7 @@ switch(input){
         }
         break;
     case "c":
-        for(i=1; i<11; i++){
+        for(i=1; i<=10; i++){
             for(k=10-i;k>0; k--){
                 document.write("&nbsp;&nbsp")
             }
