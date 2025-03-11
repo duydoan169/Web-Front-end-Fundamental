@@ -43,10 +43,10 @@ do{
             let primeArr=[];
             for(i=0; i<array.length; i++){
                 let check=0;
-                for(j=2; j<array[i]**(1/2); j++){
+                for(j=2; j<=array[i]**(1/2); j++){
                     if(array[i]%j==0){
                         check++;
-                        break
+                        break;
                     }
                 }
                 if(check==0 && array[i]!=1){

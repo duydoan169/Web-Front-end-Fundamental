@@ -1,11 +1,11 @@
 let arrFib=[];
 let array=[];
 let check=0;
-let fib1=1, fib2=1;
+let fib1=0, fib2=1;
 let loopNum=+prompt("nhap so phan tu trong mang");
 if(loopNum>0){
     for(let i=0; i<loopNum; i++){
-        array[i]=prompt("nhap phan tu thu " + (i+1));
+        array[i]=+prompt("nhap phan tu thu " + (i+1));
     }
     arrFib.push(fib1);
     if(loopNum>1){
