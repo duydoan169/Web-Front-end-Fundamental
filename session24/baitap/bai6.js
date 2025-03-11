@@ -44,7 +44,7 @@ do {
                 break;
             case 6:
                 let arr2 = [];
-                arr2 = str.split("");
+                arr2 = str.trim().split("");
                 arr2[0]=arr2[0].toUpperCase();
                 for(i=0; i<arr2.length; i++){
                     if(arr2[i]==" " && isNaN(arr2[i+1])){
