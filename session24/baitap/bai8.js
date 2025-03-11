@@ -79,7 +79,6 @@ do {
 
       break;
     case 6:
-      let str = "Hello World This Is A Test";
       let wordsArray = str.split(" ");
       let joinedString = wordsArray.join("_");
       let snakeCaseString = joinedString.toLowerCase();
