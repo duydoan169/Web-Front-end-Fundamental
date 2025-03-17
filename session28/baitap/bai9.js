@@ -107,16 +107,16 @@ function update() {
 }
 //xóa theo id
 function deleteId() {
-    let id = +prompt("nhập id nhân viên muốn xóa");
+    let id = +prompt("nhập id sách muốn xóa");
     let findIndex = arr.findIndex((item) => item.id == id);
     if (findIndex != -1) {
         let confitmDelete = confirm("bạn có muốn xóa hay không?");
         if (confitmDelete) {
             arr.splice(findIndex, 1);
-            console.log("xóa nhân viên thành công!");
+            console.log("xóa sách thành công!");
         }
     } else {
-    console.log("không tìm thấy nhân viên có id là: ", id);
+    console.log("không tìm thấy sách có id là: ", id);
   }
 }
 function sort() {

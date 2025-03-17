@@ -68,8 +68,8 @@ function deleteEmployee() {
 }
 
 function updateWage(){
-    let id = +prompt("mời bạn nhập id nhân viên muốn cập nhật lương : ");
-    let findIndex = employees.findIndex((item) => item.id == id);
+  let id = +prompt("mời bạn nhập id nhân viên muốn cập nhật lương : ");
+  let findIndex = employees.findIndex((item) => item.id == id);
   if (findIndex != -1) {
     let confitmDelete = confirm("bạn có muốn cập nhật lương cho nhân viên hay không?");
     let luong = +prompt("mời bạn nhập lương : ");
