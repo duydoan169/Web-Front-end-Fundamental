@@ -105,10 +105,10 @@
         }
 
         function removeTask(event, index) {
-            event.stopPropagation(); // Prevent marking as completed when deleting
+            event.stopPropagation();
             toList.splice(index, 1);
             printData();
-        }
+        }   
         printData();
     </script>
 </body>
