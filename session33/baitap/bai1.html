@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility" />
+    <style>
+        div{
+            position: relative;
+            width: fit-content;
+            font-size: 18px;
+        }
+        span{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+        input{
+            width: 250px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="nhap mat khau...">
+        <span onclick="changeIcon()" class="material-symbols-outlined">
+            visibility
+        </span>
+    </div>
+    <script>
+        function changeIcon(){
+            if(document.getElementsByTagName("input")[0].type==="text"){
+                document.getElementsByTagName("input")[0].type="password";
+                document.getElementsByTagName("span")[0].textContent="visibility_off";
+            } else if(document.getElementsByTagName("input")[0].type==="password"){
+                document.getElementsByTagName("input")[0].type="text";
+                document.getElementsByTagName("span")[0].textContent="visibility";
+            }
+        }
+    </script>
+</body>
+</html>

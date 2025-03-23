@@ -10,6 +10,7 @@
             flex-direction: column;
             gap: 20px;
             align-items: center;
+            opacity: 0.2;
         }
         .grey{
             width: 700px;
@@ -51,16 +52,21 @@
     </div>
     <script>
         let progressPercent=20;
+        let opacityBar=0.2;
         function increaseProgress(){
             if(progressPercent<=90){
                 progressPercent+=10;
                 document.getElementsByClassName("green")[0].style.width=progressPercent+"%";
+                opacityBar+=0.1;
+                document.getElementsByTagName("body")[0].style.opacity=opacityBar;
             }
         }
         function decreaseProgress(){
             if(progressPercent>=10){
                 progressPercent-=10;
                 document.getElementsByClassName("green")[0].style.width=progressPercent+"%";
+                opacityBar-=0.1;
+                document.getElementsByTagName("body")[0].style.opacity=opacityBar;
             }
         }
     </script>
