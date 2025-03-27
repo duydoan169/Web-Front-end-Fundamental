@@ -146,7 +146,7 @@
         function loadComments() {
             let commentList = document.getElementById("comment-list");
             let comments = JSON.parse(localStorage.getItem("comments")) || [];
-            commentList.innerHTML = ""; // Xóa danh sách cũ trước khi tải mới
+            commentList.innerHTML = "";
 
             comments.forEach(comment => {
                 let li = document.createElement("li");
