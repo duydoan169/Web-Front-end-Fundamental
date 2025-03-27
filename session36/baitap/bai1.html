@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(244, 244, 255);
+            display: flex;
+            justify-content: center;
+            margin-top: 75px;
+        }
+        .container{
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content1{
+            display: block;
+        }
+        .content2{
+            display: none;
+        }
+        .content1 button{
+            border: none;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            color: white;
+            width: 100px;
+            height: 35px;
+        }
+        .content2 button{
+            border: none;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            color: white;
+            width: 150px;
+            height: 35px;
+        }
+        .content1 input{
+            width: 250px;
+            height: 35px;
+            border-radius: 5px;
+            border: 1px solid rgb(187, 187, 187);
+        }
+        .content1 .inputLine{
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content1">
+            <h1>Nhap ten cua ban</h1>
+            <div class="inputLine">
+                <input type="text"> 
+                <button onclick="saveName()">Luu</button>
+            </div>
+        </div>
+        <div class="content2">
+            <h1 class="hello"></h1>
+            <button onclick="changeName()">Doi ten</button>
+        </div>
+    </div>
+    <script>
+        function saveName(){
+            if(localStorage.getItem("name")){
+                let name=localStorage.getItem("name");
+                document.getElementsByClassName("hello")[0].textContent=`chao ban, ${name}`
+            } else{
+                if(document.getElementsByTagName("input")[0].value.trim().length==0){
+                    alert("khong duoc de trong ten");
+                    return;
+                }
+                localStorage.setItem("name", document.getElementsByTagName("input")[0].value.trim());
+                document.getElementsByClassName("content1")[0].style.display="none";
+                document.getElementsByClassName("content2")[0].style.display="block";
+                let name=localStorage.getItem("name");
+                document.getElementsByClassName("hello")[0].textContent=`chao ban, ${name}`
+            }
+        }
+        function printContent(){
+            if(localStorage.getItem("name")){
+                document.getElementsByClassName("content1")[0].style.display="none";
+                document.getElementsByClassName("content2")[0].style.display="block";
+                let name=localStorage.getItem("name");
+                document.getElementsByClassName("hello")[0].textContent=`chao ban, ${name}`
+            } else{
+                document.getElementsByClassName("content1")[0].style.display="block";
+                document.getElementsByClassName("content2")[0].style.display="none";
+            }
+        }
+        printContent();
+        function changeName(){
+            localStorage.clear();
+            printContent();
+        }
+    </script>
+</body>
+</html>

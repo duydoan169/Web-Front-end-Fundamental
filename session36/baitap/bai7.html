@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Mini</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; text-align: center; }
+        .container { margin: auto; width: 300px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #333; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 4px; width: 100%; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        a { display: block; margin-top: 10px; color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div id="register" class="container">
+        <h2>Đăng ký</h2>
+        <input type="text" id="regUsername" placeholder="Tên đăng nhập">
+        <input type="password" id="regPassword" placeholder="Mật khẩu">
+        <button onclick="register()">Đăng ký</button>
+        <a href="#" onclick="toggleLogin()">Quay lại đăng nhập</a>
+    </div>
+
+    <div id="login" class="container" style="display: none;">
+        <h2>Đăng nhập</h2>
+        <input type="text" id="loginUsername" placeholder="Tên đăng nhập">
+        <input type="password" id="loginPassword" placeholder="Mật khẩu">
+        <label><input type="checkbox" id="rememberMe"> Ghi nhớ tôi</label>
+        <button onclick="login()">Đăng nhập</button>
+        <a href="#" onclick="toggleRegister()">Chưa có tài khoản? Đăng ký</a>
+    </div>
+
+    <div id="home" class="container" style="display: none;">
+        <h2>Xin chào, <span id="welcomeUser"></span>! 👋</h2>
+        <p>Chào mừng bạn đến với hệ thống mini!</p>
+        <button onclick="logout()">Đăng xuất</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('loggedInUser')) {
+                goToHome(localStorage.getItem('loggedInUser'));
+            }
+        });
+
+        function register() {
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            if (users.some(user => user.username === username)) {
+                alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác!');
+                return;
+            }
+
+            if (username && password) {
+                users.push({ username, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert('Đăng ký thành công!');
+                toggleLogin();
+            } else {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                if (rememberMe) localStorage.setItem('loggedInUser', username);
+                goToHome(username);
+            } else {
+                alert('Tên đăng nhập hoặc mật khẩu không chính xác!');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function goToHome(username) {
+            document.getElementById('welcomeUser').innerText = username;
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+        }
+
+        function toggleLogin() {
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function toggleRegister() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
