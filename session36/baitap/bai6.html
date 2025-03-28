@@ -5,56 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hệ thống đánh giá sản phẩm</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 20px;
-        }
-
-        .product {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 20px;
+      }
+      .product {
         background: white;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         display: inline-block;
         width: 400px;
-        }
-
-        .stars {
+      }
+      .stars {
         font-size: 30px;
         cursor: pointer;
         color: #ddd;
-        }
-
-        .stars.active,
-        .stars:hover {
+      }
+      .stars.active,
+      .stars:hover {
         color: gold;
-        }
-
-        .comment-section {
+      }
+      .comment-section {
         margin-top: 20px;
         text-align: left;
-        }
-
-        .comment-box {
+      }
+      .comment-box {
         width: 100%;
         padding: 10px;
         margin-top: 10px;
-        }
-
-        .comment-list {
+      }
+      .comment-list {
         margin-top: 10px;
         padding: 0;
         list-style: none;
-        }
-
-        .comment-list li {
+      }
+      .comment-list li {
         background: #fff;
         padding: 10px;
         margin-top: 5px;
@@ -63,16 +56,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        }
-
-        .comment-list span {
+      }
+      .comment-list span {
         font-weight: bold;
         color: gold;
-        }
-        img {
+      }
+      img {
         width: 100%;
         margin: 15px 0;
-        }
+      }
     </style>
   </head>
   <body>
@@ -92,7 +84,6 @@
       </div>
       <p id="selected-rating">Bạn chưa đánh giá.</p>
 
-      <!-- Bình luận -->
       <div class="comment-section">
         <h3>Bình luận</h3>
         <textarea id="comment-input" class="comment-box" placeholder="Nhập bình luận..."></textarea>
@@ -100,62 +91,59 @@
         <ul id="comment-list" class="comment-list"></ul>
       </div>
     </div>
-    
+
     <script>
-        let selectedStars = 0;
+      let selectedStars = 0;
 
-        // Cập nhật số sao khi người dùng chọn
-        function numberStars(value) {
-            selectedStars = value;
-            document.getElementById("selected-rating").innerText = `Bạn đã đánh giá: ${selectedStars} sao`;
+      function numberStars(value) {
+        selectedStars = value;
+        document.getElementById("selected-rating").innerText = `Bạn đã đánh giá: ${selectedStars} sao`;
+      }
+
+      function submitReview() {
+        if (selectedStars === 0) {
+          alert("Vui lòng chọn số sao trước khi bình luận!");
+          return;
         }
 
-        // Gửi đánh giá và lưu vào localStorage
-        function submitReview() {
-            if (selectedStars === 0) {
-                alert("Vui lòng chọn số sao trước khi bình luận!");
-                return;
-            }
-
-            let danhgia = document.getElementById("comment-input").value.trim();
-            if (danhgia === "") {
-                alert("Vui lòng nhập bình luận!");
-                return;
-            }
-
-            let str = "";
-            for (let i = 0; i < selectedStars; i++) {
-                str += "★";
-            }
-
-            // Thêm đánh giá vào danh sách
-            let newComment = {
-                stars: str,
-                text: danhgia
-            };
-
-            let comments = JSON.parse(localStorage.getItem("comments")) || [];
-            comments.push(newComment);
-            localStorage.setItem("comments", JSON.stringify(comments));
-
-            document.getElementById("comment-input").value = ""; // Xóa ô nhập bình luận
-            loadComments(); // Cập nhật danh sách bình luận
+        let danhgia = document.getElementById("comment-input").value.trim();
+        if (danhgia === "") {
+          alert("Vui lòng nhập bình luận!");
+          return;
         }
 
-        // Hiển thị bình luận từ localStorage
-        function loadComments() {
-            let commentList = document.getElementById("comment-list");
-            let comments = JSON.parse(localStorage.getItem("comments")) || [];
-            commentList.innerHTML = "";
-
-            comments.forEach(comment => {
-                let li = document.createElement("li");
-                li.innerHTML = `<span>${comment.stars}</span> <b>${comment.text}</b>`;
-                commentList.appendChild(li);
-            });
+        let str = "";
+        for (let i = 0; i < selectedStars; i++) {
+          str += "★";
         }
 
-        // Khi tải trang
-        loadComments();     </script>
+        let newComment = {
+          stars: str,
+          text: danhgia,
+        };
+
+        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+        comments.push(newComment);
+        localStorage.setItem("comments", JSON.stringify(comments));
+
+        document.getElementById("comment-input").value = "";
+        loadComments();
+      }
+
+      function loadComments() {
+        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+        let str = "";
+        comments.forEach((comment) => {
+          str += `
+            <li>
+              <span>${comment.stars}</span>
+              <b>${comment.text}</b>
+            </li>`;
+        });
+        document.getElementById("comment-list").innerHTML = str;
+      }
+
+      loadComments();
+    </script>
   </body>
 </html>

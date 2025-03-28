@@ -2,148 +2,192 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hệ thống đánh giá sản phẩm</title>
+    <title>Document</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
+        body {
         font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        padding: 30px;
+        }
+
+        h2 {
         text-align: center;
-        background-color: #f4f4f4;
-        margin: 20px;
-      }
-      .product {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-        width: 400px;
-      }
-      .stars {
-        font-size: 30px;
-        cursor: pointer;
-        color: #ddd;
-      }
-      .stars.active,
-      .stars:hover {
-        color: gold;
-      }
-      .comment-section {
-        margin-top: 20px;
-        text-align: left;
-      }
-      .comment-box {
-        width: 100%;
+        margin-bottom: 20px;
+        }
+
+        .task-input {
+        text-align: center;
+        margin-bottom: 30px;
+        }
+
+        input[type='text'] {
         padding: 10px;
-        margin-top: 10px;
-      }
-      .comment-list {
-        margin-top: 10px;
-        padding: 0;
-        list-style: none;
-      }
-      .comment-list li {
-        background: #fff;
-        padding: 10px;
-        margin-top: 5px;
+        width: 300px;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        }
+
+        button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #0056b3;
+        }
+
+        .board {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        }
+
+        .column {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .column h3 {
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        }
+
+        .task {
+        background-color: #ebebeb;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
-      .comment-list span {
-        font-weight: bold;
-        color: gold;
-      }
-      img {
-        width: 100%;
-        margin: 15px 0;
-      }
+        }
+
+        .task p {
+        margin: 0 0 5px 0;
+        }
+
+        .task button {
+        padding: 5px 10px;
+        font-size: 13px;
+        background-color: #28a745;
+        }
+
+        .task button:hover {
+        background-color: #218838;
+        }
     </style>
   </head>
   <body>
-    <div class="product">
-      <h2>Sản phẩm: Tai nghe Bluetooth</h2>
-      <img
-        src="https://imgs.search.brave.com/JRPdDRzOPxD2puv-eXZx8AiHMt7ySnUVRZs4uCbu7CI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTI5/NDk2NjY4Ni9waG90/by9iZWlqaW5nLWNo/aW5hLWFpcnBvZHMt/bWF4LWlzLXNlZW4t/YXQtYW4tYXBwbGUt/c3RvcmUtb24tamFu/dWFyeS0yLTIwMjEt/aW4tYmVpamluZy1j/aGluYS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9aXlyd0Np/TkJ6UW9jZzdUTHEt/LTNpNGM5dXpiTkda/NHprOW4tdUwwRWtk/Zz0"
-        alt=""
-      />
-      <p>Đánh giá sản phẩm:</p>
-      <div id="rating">
-        <span class="stars" data-value="1" onclick="numberStars(1)">★</span>
-        <span class="stars" data-value="2" onclick="numberStars(2)">★</span>
-        <span class="stars" data-value="3" onclick="numberStars(3)">★</span>
-        <span class="stars" data-value="4" onclick="numberStars(4)">★</span>
-        <span class="stars" data-value="5" onclick="numberStars(5)">★</span>
-      </div>
-      <p id="selected-rating">Bạn chưa đánh giá.</p>
+    <h2>🗂️ Quản lý công việc (Task Board)</h2>
 
-      <div class="comment-section">
-        <h3>Bình luận</h3>
-        <textarea id="comment-input" class="comment-box" placeholder="Nhập bình luận..."></textarea>
-        <button onclick="submitReview()">Gửi</button>
-        <ul id="comment-list" class="comment-list"></ul>
-      </div>
+    <div class="task-input">
+      <input type="text" id="taskName" placeholder="Nhập tên công việc..." />
+      <button onclick="addJob()">Thêm</button>
     </div>
 
+    <div class="board">
+      <div class="column" id="pendingCol">
+        <h3>🕐 Chờ xử lý</h3>
+        <div id="pendingTasks">
+          <!-- <div class="task">
+            <p>Nội dung</p>
+            <button>Chuyển tiếp</button>
+          </div> -->
+        </div>
+      </div>
+      <div class="column" id="inProgressCol">
+        <h3>🔨 Đang làm</h3>
+        <div id="inProgressTasks">
+
+        </div>
+      </div>
+      <div class="column" id="doneCol">
+        <h3>✅ Hoàn thành</h3>
+        <div id="doneTasks">
+          <!-- <div class="task">
+            <p>Nội dung</p>
+          </div> -->
+        </div>
+      </div>
+    </div>
     <script>
-      let selectedStars = 0;
-
-      function numberStars(value) {
-        selectedStars = value;
-        document.getElementById("selected-rating").innerText = `Bạn đã đánh giá: ${selectedStars} sao`;
-      }
-
-      function submitReview() {
-        if (selectedStars === 0) {
-          alert("Vui lòng chọn số sao trước khi bình luận!");
-          return;
+        let waitingArr=JSON.parse(localStorage.getItem("waitingArr"))||[];
+        let doingArr=JSON.parse(localStorage.getItem("doingArr"))||[];
+        let doneArr=JSON.parse(localStorage.getItem("doneArr"))||[];
+        function addJob(){
+          let waitingArr=JSON.parse(localStorage.getItem("waitingArr"))||[];
+            if(document.getElementById("taskName").value.trim().length==0){
+                alert("khong duoc de trong ten cong viec");
+                return;
+            }
+            waitingArr.push(document.getElementById("taskName").value.trim())
+            localStorage.setItem("waitingArr", JSON.stringify(waitingArr));
+            document.getElementById("taskName").value="";
+            printJob();
         }
+        function printJob(){
+            let waitingArr=JSON.parse(localStorage.getItem("waitingArr"))||[];
+            let strW="";
+            waitingArr.forEach((item, index) => {
+                strW+=`
+                <div class="task">
+                    <p>${item}</p>
+                    <button onclick="changeCol(${1}, ${index})">Chuyển tiếp</button>
+                </div>
+                `
+            });
+            document.getElementById("pendingTasks").innerHTML=strW;
 
-        let danhgia = document.getElementById("comment-input").value.trim();
-        if (danhgia === "") {
-          alert("Vui lòng nhập bình luận!");
-          return;
+            let doingArr=JSON.parse(localStorage.getItem("doingArr"))||[];
+            let strD="";
+            doingArr.forEach((item, index) => {
+                strD+=`
+                <div class="task">
+                    <p>${item}</p>
+                    <button onclick="changeCol(${2}, ${index})">Chuyển tiếp</button>
+                </div>
+                `
+            });
+            document.getElementById("inProgressTasks").innerHTML=strD;
+
+            let doneArr=JSON.parse(localStorage.getItem("doneArr"))||[];
+            let strDN="";
+            doneArr.forEach((item, index) => {
+                strDN+=`
+                <div class="task">
+                    <p>${item}</p>
+                </div>
+                `
+            });
+            document.getElementById("doneTasks").innerHTML=strDN;
         }
-
-        let str = "";
-        for (let i = 0; i < selectedStars; i++) {
-          str += "★";
+        function changeCol(col, index){
+            let waitingArr=JSON.parse(localStorage.getItem("waitingArr"))||[];
+            let doingArr=JSON.parse(localStorage.getItem("doingArr"))||[]
+            if(col==1){
+                doingArr.push(waitingArr[index])
+                waitingArr.splice(index, 1);
+                localStorage.setItem("waitingArr", JSON.stringify(waitingArr));
+                localStorage.setItem("doingArr", JSON.stringify(doingArr));
+                printJob();
+            } else if(col==2){
+                doneArr.push(doingArr[index])
+                doingArr.splice(index, 1);
+                localStorage.setItem("doingArr", JSON.stringify(doingArr));
+                localStorage.setItem("doneArr", JSON.stringify(doneArr));
+                printJob();
+            }
         }
-
-        let newComment = {
-          stars: str,
-          text: danhgia,
-        };
-
-        let comments = JSON.parse(localStorage.getItem("comments")) || [];
-        comments.push(newComment);
-        localStorage.setItem("comments", JSON.stringify(comments));
-
-        document.getElementById("comment-input").value = "";
-        loadComments();
-      }
-
-      function loadComments() {
-        let comments = JSON.parse(localStorage.getItem("comments")) || [];
-        let str = "";
-        comments.forEach((comment) => {
-          str += `
-            <li>
-              <span>${comment.stars}</span>
-              <b>${comment.text}</b>
-            </li>`;
-        });
-        document.getElementById("comment-list").innerHTML = str;
-      }
-
-      loadComments();
+        printJob();
     </script>
   </body>
 </html>
